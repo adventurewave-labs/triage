@@ -14,6 +14,16 @@ export function esc(s: unknown): string {
     .replaceAll("'", "&#39;");
 }
 
+/**
+ * Same-origin redirect target for form `back` fields. Only a single leading
+ * "/" passes: "//host" and "/\host" are protocol-relative (browsers treat "\"
+ * as "/"), and browsers strip tabs/newlines, so "/<TAB>/host" collapses to
+ * "//host" — control characters are rejected outright.
+ */
+export function safeBack(back: unknown): string {
+  return typeof back === "string" && /^\/(?![/\\])[^\x00-\x1f\x7f]*$/.test(back) ? back : "/";
+}
+
 const CSS = `
 :root {
   --bg: #0b0f14; --panel: #121820; --panel2: #182028; --line: #223040;

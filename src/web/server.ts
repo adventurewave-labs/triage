@@ -6,7 +6,7 @@ import { runBriefingPipeline, briefingFromDb } from "../engine/briefing.js";
 import { buildDossier } from "../engine/dossier.js";
 import { recordOverride, REASON_CODES } from "../engine/overrides.js";
 import { runCalibration } from "../engine/calibration.js";
-import { layout, esc, scoreBadge, deltaHtml } from "./html.js";
+import { layout, esc, scoreBadge, deltaHtml, safeBack } from "./html.js";
 
 /**
  * Triage web UI — server-rendered, zero build. The ≤10-second override loop
@@ -71,7 +71,7 @@ app.post("/run/brief", async (c) => {
 
 app.get("/company/:id", async (c) => {
   const db = await getDb();
-  const id = decodeURIComponent(c.req.param("id"));
+  const id = c.req.param("id"); // Hono already decodes path params
   const view = await buildDossier(db, id);
   const flash = c.req.query("flash");
   if (!view.entity) {
@@ -128,7 +128,7 @@ app.get("/company/:id", async (c) => {
 app.post("/override", async (c) => {
   const db = await getDb();
   const form = await c.req.parseBody();
-  const back = typeof form.back === "string" && form.back.startsWith("/") ? form.back : "/";
+  const back = safeBack(form.back);
   const sep = back.includes("?") ? "&" : "?";
   try {
     await recordOverride(db, {
@@ -174,6 +174,9 @@ app.post("/run/calibration", async (c) => {
 });
 
 const port = Number(process.env.PORT ?? 8080);
-serve({ fetch: app.fetch, port }, (info) => {
-  console.log(`triage web ui: http://127.0.0.1:${info.port}`);
+// Loopback by default: the UI is unauthenticated and DB-writing, with no CSRF
+// protection on its form posts. Set HOST explicitly to expose it.
+const hostname = process.env.HOST ?? "127.0.0.1";
+serve({ fetch: app.fetch, port, hostname }, (info) => {
+  console.log(`triage web ui: http://${hostname}:${info.port}`);
 });

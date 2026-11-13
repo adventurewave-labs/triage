@@ -4,9 +4,13 @@
   "private": true,
   "description": "Evidence-linked decision support for early-stage healthcare investing",
   "type": "module",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "pnpm": {
-    "onlyBuiltDependencies": ["esbuild"]
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   },
   "scripts": {
     "seed": "tsx src/engine/cli.ts seed",
@@ -17,14 +21,17 @@
     "score": "tsx src/engine/cli.ts score",
     "calibrate": "tsx src/engine/cli.ts calibrate",
     "mcp": "tsx src/engine/cli.ts mcp",
+    "web": "tsx src/web/server.ts",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "eval": "tsx src/engine/cli.ts calibrate --quiet"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.5.16",
+    "@hono/node-server": "^2.1.7",
     "@modelcontextprotocol/sdk": "^1.12.0",
     "commander": "^13.1.0",
+    "hono": "^4.13.18",
     "zod": "^3.24.0"
   },
   "devDependencies": {

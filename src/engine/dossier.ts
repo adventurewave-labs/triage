@@ -4,6 +4,7 @@ import { getEntity } from "./pack.js";
 import { signalsFor } from "./signals.js";
 import { neighbors } from "./graph.js";
 import { warmPathFor } from "./adapters/crm-synthetic.js";
+import { overridesForScore } from "./overrides.js";
 
 export interface DossierView {
   entity: { id: string; name: string; type: string; data: Record<string, unknown> } | null;
@@ -11,6 +12,8 @@ export interface DossierView {
   neighborhood: Array<{ id: string; name: string; type: string; hop: number }>;
   warm_path: { found: boolean; path?: string[]; via?: string[] };
   scorecard: ScoreResult | null;
+  latest_score_id: number | null;
+  overrides: Array<{ id: number; verdict: string; reason_code: string; note: string; created_at: string }>;
 }
 
 export async function buildDossier(db: PGlite, subjectId: string): Promise<DossierView> {
@@ -19,10 +22,11 @@ export async function buildDossier(db: PGlite, subjectId: string): Promise<Dossi
   const neighborhood = await neighbors(db, subjectId, 2, 12);
   const warm = await warmPathFor(db, subjectId);
   const scoreRows = await db.query<{
+    id: number;
     total: number; confidence: number; rubric_version: string; provider: string; pack_hash: string;
     dimensions: unknown; bear_case: string; why_now: unknown; evidence_count: number; first_seen: string; red_team: unknown; run_id: string;
   }>(
-    `SELECT total, confidence, rubric_version, provider, pack_hash, dimensions, bear_case,
+    `SELECT id, total, confidence, rubric_version, provider, pack_hash, dimensions, bear_case,
             why_now, evidence_count, first_seen::text, red_team, run_id
      FROM scores WHERE subject_id=$1 ORDER BY created_at DESC LIMIT 1`,
     [subjectId]
@@ -51,12 +55,15 @@ export async function buildDossier(db: PGlite, subjectId: string): Promise<Dossi
       red_team: parse<ScoreResult["red_team"]>(row.red_team),
     };
   }
+  const overrides = row ? await overridesForScore(db, row.id) : [];
   return {
     entity: entity ? { id: entity.id, name: entity.name, type: entity.type, data: entity.data } : null,
     timeline,
     neighborhood,
     warm_path: warm,
     scorecard,
+    latest_score_id: row?.id ?? null,
+    overrides,
   };
 }
 

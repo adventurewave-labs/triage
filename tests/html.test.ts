@@ -15,6 +15,7 @@ describe("web html helpers", () => {
     expect(safeBack("//evil.com")).toBe("/");
     expect(safeBack("/\\evil.com")).toBe("/");
     expect(safeBack("/\t/evil.com")).toBe("/");
+    expect(safeBack("/a\r\nSet-Cookie: x")).toBe("/");
     expect(safeBack("https://evil.com")).toBe("/");
     expect(safeBack("evil")).toBe("/");
     expect(safeBack(undefined)).toBe("/");

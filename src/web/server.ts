@@ -176,7 +176,7 @@ app.post("/run/calibration", async (c) => {
 const port = Number(process.env.PORT ?? 8080);
 // Loopback by default: the UI is unauthenticated and DB-writing, with no CSRF
 // protection on its form posts. Set HOST explicitly to expose it.
-const hostname = process.env.HOST ?? "127.0.0.1";
+const hostname = process.env.HOST || "127.0.0.1";
 serve({ fetch: app.fetch, port, hostname }, (info) => {
   console.log(`triage web ui: http://${hostname}:${info.port}`);
 });

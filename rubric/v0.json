@@ -1,0 +1,43 @@
+{
+  "version": "v0",
+  "scales": {
+    "anchor0": "No credible evidence available on this dimension.",
+    "anchor1": "Evidence exists but is thin, stale, or single-source; claims are weak.",
+    "anchor2": "Mixed evidence; positives and negatives roughly balance.",
+    "anchor3": "Specific, falsifiable, multi-source evidence supports the dimension.",
+    "anchor4": "Overwhelming, recent, independent multi-source evidence; counter-evidence examined and answered."
+  },
+  "rules": {
+    "minEvidencePerDimension": 2,
+    "counterEvidenceRequired": true,
+    "confidenceInputs": ["evidenceCount", "sourceAgreement", "recencyDays"],
+    "evidenceStalenessWindows": {
+      "regulatory": 400,
+      "trial": 400,
+      "funding": 365,
+      "hire": 180,
+      "publication": 720,
+      "crm": 365
+    }
+  },
+  "company": {
+    "dimensions": [
+      { "key": "why_now", "weight": 25, "minEvidence": 2, "measures": "What changed in the last 12 months: cost curves, regulation, reimbursement, behavior. No recent change = background company." },
+      { "key": "market_structure", "weight": 15, "minEvidence": 2, "measures": "Fragmentation, incumbent failure modes, credible reimbursement pathway." },
+      { "key": "wedge_defensibility", "weight": 15, "minEvidence": 2, "measures": "Data/network/regulatory moat plausibly reachable from the entry wedge." },
+      { "key": "regulatory_posture", "weight": 15, "minEvidence": 2, "measures": "Clearance pathway clarity; reimbursement-pathway evidence (clearance alone is not reimbursement)." },
+      { "key": "capital_efficiency", "weight": 15, "minEvidence": 2, "measures": "Are the milestones to the next raise credible at this burn?" },
+      { "key": "signal_momentum", "weight": 15, "minEvidence": 2, "measures": "Hiring, trial activity, filing cadence trending up vs flat." }
+    ]
+  },
+  "founder": {
+    "dimensions": [
+      { "key": "domain_depth", "weight": 20, "minEvidence": 2, "measures": "Years in the specific care domain; clinical/operational credibility (roles, publications, patents)." },
+      { "key": "outcome_quality", "weight": 20, "minEvidence": 2, "measures": "Prior company outcomes, role-weighted (founder vs early employee at outcome)." },
+      { "key": "insight_specificity", "weight": 20, "minEvidence": 2, "measures": "Does the founder articulate a falsifiable, non-consensus claim tied to their operating history?" },
+      { "key": "cofounder_complementarity", "weight": 15, "minEvidence": 2, "measures": "Coverage of clinical + engineering + GTM." },
+      { "key": "recruiting_magnetism", "weight": 15, "minEvidence": 2, "measures": "Evidence of attracting strong operators early." },
+      { "key": "signal_integrity", "weight": 10, "minEvidence": 2, "measures": "Consistency of public narrative vs track record; discrepancies flagged, not hidden." }
+    ]
+  }
+}

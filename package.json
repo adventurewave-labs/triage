@@ -1,0 +1,36 @@
+{
+  "name": "triage",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Evidence-linked decision support for early-stage healthcare investing",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
+  },
+  "scripts": {
+    "seed": "tsx src/engine/cli.ts seed",
+    "ingest:live": "tsx src/engine/cli.ts ingest --live",
+    "brief": "tsx src/engine/cli.ts brief",
+    "dossier": "tsx src/engine/cli.ts dossier",
+    "memo": "tsx src/engine/cli.ts memo",
+    "score": "tsx src/engine/cli.ts score",
+    "calibrate": "tsx src/engine/cli.ts calibrate",
+    "mcp": "tsx src/engine/cli.ts mcp",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "eval": "tsx src/engine/cli.ts calibrate --quiet"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.5.16",
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "commander": "^13.1.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}

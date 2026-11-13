@@ -1,0 +1,310 @@
+{
+  "meta": {
+    "methodology": "golden-set/methodology.md",
+    "labelsAsOf": "2024-12-31",
+    "inclusionWindow": "2019-2021 Series A/B",
+    "note": "confirmed = two independent public sources; candidate = plausible, needs confirmation. Calibration computes over confirmed only."
+  },
+  "entries": [
+    {
+      "name": "Livongo Health", "segment": "chronic condition management", "seriesWindow": "2018 Series E",
+      "outcome": "up", "label_status": "confirmed",
+      "events": ["Acquired by Teladoc Health in an ~$18.5B merger announced August 2020"],
+      "evidence": [
+        { "text": "Merger with Teladoc announced at ~$18.5B enterprise value, among the largest digital-health deals of its period (2020).", "source": "Deal announcement (2020)" },
+        { "text": "Large employer and payer client base for diabetes/chronic condition remote monitoring (2019-2020).", "source": "Company disclosures (2019-2020)" },
+        { "text": "Strong revenue growth trajectory prior to merger; public filings showed accelerating bookings (2020).", "source": "Public filings (2020)" }
+      ]
+    },
+    {
+      "name": "Pear Therapeutics", "segment": "digital therapeutics", "seriesWindow": "2020 Series C",
+      "outcome": "down", "label_status": "confirmed",
+      "events": ["Filed Chapter 11 April 2023"],
+      "evidence": [
+        { "text": "Filed for Chapter 11 bankruptcy and wound down operations (2023).", "source": "Bankruptcy filing (2023)" },
+        { "text": "Core product relied on payer reimbursement that did not materialize at scale despite FDA clearance (2021-2022).", "source": "Company disclosures (2022)" },
+        { "text": "Severe cash constraints, workforce reductions before filing (2022-2023).", "source": "Press reports (2023)" }
+      ]
+    },
+    {
+      "name": "Babylon Health", "segment": "virtual care / AI triage", "seriesWindow": "2019 Series C",
+      "outcome": "down", "label_status": "confirmed",
+      "events": ["US subsidiary filed Chapter 7 August 2023; remaining business sold to eMed"],
+      "evidence": [
+        { "text": "US operations filed Chapter 7; core business sold in distressed transaction (2023).", "source": "Bankruptcy filings (2023)" },
+        { "text": "Post-SPAC public listing followed severe valuation collapse (2022).", "source": "Public filings (2022)" },
+        { "text": "Contract losses with integrated delivery networks in US markets (2022-2023).", "source": "Press reports (2023)" }
+      ]
+    },
+    {
+      "name": "Olive AI", "segment": "healthcare RPA/AI operations", "seriesWindow": "2021 Series D",
+      "outcome": "down", "label_status": "confirmed",
+      "events": ["Shut down October 2023; assets sold to competitors"],
+      "evidence": [
+        { "text": "Company shut down, selling product lines to competitors (2023).", "source": "Press reports (2023)" },
+        { "text": "Extended layoffs and product-line divestitures preceded shutdown (2022-2023).", "source": "Press reports (2022-2023)" },
+        { "text": "Rapid expansion into many product areas diluted focus; customer ROI questioned (2022).", "source": "Industry reporting (2022)" }
+      ]
+    },
+    {
+      "name": "Forward Health", "segment": "tech-enabled primary care", "seriesWindow": "2021 growth round",
+      "outcome": "down", "label_status": "confirmed",
+      "events": ["Shut down consumer clinics November 2024"],
+      "evidence": [
+        { "text": "Ceased consumer clinic operations and shut down its flagship app (2024).", "source": "Press reports (2024)" },
+        { "text": "High-burn clinic model with limited member base relative to capital raised (2023-2024).", "source": "Industry reporting (2024)" },
+        { "text": "Pivot attempts toward government contracts did not sustain the consumer business (2024).", "source": "Press reports (2024)" }
+      ]
+    },
+    {
+      "name": "23andMe", "segment": "consumer genetics", "seriesWindow": "2020 Series F (pre-IPO era)",
+      "outcome": "down", "label_status": "confirmed",
+      "events": ["Filed Chapter 11 March 2025"],
+      "evidence": [
+        { "text": "Filed Chapter 11 bankruptcy (2025).", "source": "Court filings (2025)" },
+        { "text": "Entire board resigned citing disagreement with founder direction (2024).", "source": "SEC filing (2024)" },
+        { "text": "Data breach litigation exposure and collapse of therapeutics pipeline partnerships (2023-2024).", "source": "Press reports (2023-2024)" }
+      ]
+    },
+    {
+      "name": "Hinge Health", "segment": "MSK digital care", "seriesWindow": "2021 Series E ($3B valuation)",
+      "outcome": "up", "label_status": "confirmed",
+      "events": ["IPO on NYSE May 2025"],
+      "evidence": [
+        { "text": "Completed IPO (2025).", "source": "Exchange listing (2025)" },
+        { "text": "Sustained employer-channel revenue growth and public pre-IPO disclosures of profitability (2024).", "source": "Company disclosures (2024)" },
+        { "text": "Category leadership in employer digital MSK benefits alongside expanding care-delivery team (2023-2024).", "source": "Industry reporting (2024)" }
+      ]
+    },
+    {
+      "name": "Omada Health", "segment": "chronic condition prevention", "seriesWindow": "2020-2021 growth rounds",
+      "outcome": "up", "label_status": "confirmed",
+      "events": ["IPO on Nasdaq June 2025"],
+      "evidence": [
+        { "text": "Completed IPO (2025).", "source": "Exchange listing (2025)" },
+        { "text": "CDC-listed diabetes-prevention program scale and employer/payer distribution growth (2022-2024).", "source": "Company disclosures (2024)" },
+        { "text": "Participation in GLP-1 companion-care category expansion (2024).", "source": "Industry reporting (2024)" }
+      ]
+    },
+    {
+      "name": "Transcarent", "segment": "employer healthcare navigation", "seriesWindow": "2021 Series D",
+      "outcome": "up", "label_status": "confirmed",
+      "events": ["Acquired Accolade in a ~$621M deal announced January 2025"],
+      "evidence": [
+        { "text": "Acquired public company Accolade at a substantial premium (~$621M) (2025).", "source": "Deal announcement (2025)" },
+        { "text": "Large self-insured employer client roster and surgery/episode-of-care product traction (2024).", "source": "Company disclosures (2024)" },
+        { "text": "Aggressive consolidation posture in employer navigation category (2023-2025).", "source": "Industry reporting (2025)" }
+      ]
+    },
+    {
+      "name": "Cerebral", "segment": "telepsychiatry / ADHD care", "seriesWindow": "2021 Series C",
+      "outcome": "down", "label_status": "confirmed",
+      "events": ["DOJ settlement over controlled-substance prescribing practices May 2023; earlier FTC privacy action"],
+      "evidence": [
+        { "text": "DOJ settlement over prescribing practices including allegations of automatic refill of controlled substances (2023).", "source": "DOJ announcement (2023)" },
+        { "text": "FTC enforcement over data-sharing practices (2023).", "source": "FTC announcement (2023)" },
+        { "text": "Large workforce reductions and retreat from controlled-substance prescribing (2022-2023).", "source": "Press reports (2023)" }
+      ]
+    },
+    {
+      "name": "Teladoc Health", "segment": "virtual care", "seriesWindow": "2020 merger (Livongo)",
+      "outcome": "flat", "label_status": "confirmed",
+      "events": ["Major goodwill impairments 2022-2024 following Livongo merger"],
+      "evidence": [
+        { "text": "Multi-billion-dollar goodwill impairments over consecutive years reflecting merger value destruction (2022-2024).", "source": "SEC filings (2022-2024)" },
+        { "text": "Chronic-care (Livongo-derived) unit revenue growth slowed after merger integration (2023).", "source": "Public filings (2023)" },
+        { "text": "Core virtual-visit business matured; growth shifted to low-margin international/enterprise contracts (2024).", "source": "Public filings (2024)" }
+      ]
+    },
+    {
+      "name": "Oscar Health", "segment": "ACA insurance", "seriesWindow": "2021 IPO",
+      "outcome": "up", "label_status": "confirmed",
+      "events": ["First full-year GAAP profitability for FY2024"],
+      "evidence": [
+        { "text": "Reported first full-year GAAP net profit (FY2024).", "source": "Earnings release (2025)" },
+        { "text": "Membership growth and improved medical loss ratio over consecutive years (2023-2024).", "source": "Public filings (2024)" },
+        { "text": "Technology-led operations ('Reconciled Model') cited as driver of underwriting gains (2024).", "source": "Company disclosures (2024)" }
+      ]
+    },
+    {
+      "name": "Zocdoc", "segment": "provider discovery/booking", "seriesWindow": "2021 $150M raise",
+      "outcome": "up", "label_status": "candidate",
+      "events": ["$150M growth round 2021; sustained marketplace growth claims through 2024-2025"],
+      "evidence": [
+        { "text": "Raised $150M growth round at enhanced valuation after prior plateau (2021).", "source": "Funding announcement (2021)" },
+        { "text": "Company-reported bookings growth and profitability milestones (2024-2025).", "source": "Company statements (2025)" },
+        { "text": "Expanded into new specialties and payer partnerships (2023-2024).", "source": "Press reports (2024)" }
+      ]
+    },
+    {
+      "name": "Hims & Hers", "segment": "DTC telehealth + pharmacy", "seriesWindow": "2021 SPAC listing",
+      "outcome": "up", "label_status": "candidate",
+      "events": ["Sustained rapid revenue growth post-listing through 2024-2025"],
+      "evidence": [
+        { "text": "Consistent high-growth revenue trajectory across post-listing years (2022-2024).", "source": "SEC filings (2022-2024)" },
+        { "text": "Personalization/subscriptions model drove subscriber growth and rising revenue per user (2024).", "source": "Earnings releases (2024)" },
+        { "text": "Expanded into weight-health category with strong early adoption (2024).", "source": "Press reports (2024)" }
+      ]
+    },
+    {
+      "name": "Amwell", "segment": "virtual care platform", "seriesWindow": "2020 SPAC listing",
+      "outcome": "down", "label_status": "confirmed",
+      "events": ["Severe post-SPAC decline: reverse split 2023, continued losses"],
+      "evidence": [
+        { "text": "Reverse stock split amid sharp decline from post-SPAC valuation (2023).", "source": "SEC filing (2023)" },
+        { "text": "Continued operating losses and shrinking cash runway across consecutive years (2022-2024).", "source": "Public filings (2022-2024)" },
+        { "text": "Loss of anchor telehealth contract volumes to incumbent EHR-channel competitors (2023-2024).", "source": "Industry reporting (2024)" }
+      ]
+    },
+    {
+      "name": "Bright Health / NeueHealth", "segment": "ACA insurance / value-based care", "seriesWindow": "2021 IPO",
+      "outcome": "down", "label_status": "candidate",
+      "events": ["Massive losses, exited ACA markets 2023, restructured as NeueHealth"],
+      "evidence": [
+        { "text": "Exited multiple ACA state markets after severe underwriting losses (2023).", "source": "SEC filings (2023)" },
+        { "text": "Restructured into NeueHealth with scaled-down insurance operations (2023).", "source": "Company announcements (2023)" },
+        { "text": "Compliance/delisting pressures and leadership turnover (2023).", "source": "Press reports (2023)" }
+      ]
+    },
+    {
+      "name": "Health Catalyst", "segment": "healthcare data analytics", "seriesWindow": "2019 IPO",
+      "outcome": "flat", "label_status": "candidate",
+      "events": ["Chronic losses and equity value decline through 2023-2024"],
+      "evidence": [
+        { "text": "Persistent GAAP losses across post-IPO years (2020-2024).", "source": "Public filings (2024)" },
+        { "text": "Equity value far below IPO reference through the window (2023-2024).", "source": "Market data (2024)" },
+        { "text": "Continued RCM/technical-services divestitures amid strategy narrowing (2023).", "source": "Company announcements (2023)" }
+      ]
+    },
+    {
+      "name": "Sword Health", "segment": "digital MSK / pain care", "seriesWindow": "2021 Series D ($3B valuation)",
+      "outcome": "up", "label_status": "candidate",
+      "events": ["Large 2022 round at $3B; company-reported profitability milestones 2024"],
+      "evidence": [
+        { "text": "Raised at $3B valuation, doubling prior mark (2022).", "source": "Funding announcement (2022)" },
+        { "text": "Company-reported profitability and member-growth milestones (2024).", "source": "Company statements (2024)" },
+        { "text": "Expanded into pelvic-health and mental-health adjacent categories (2023-2024).", "source": "Press reports (2024)" }
+      ]
+    },
+    {
+      "name": "Ro (Roman)", "segment": "DTC telehealth + pharmacy", "seriesWindow": "2021 Series D",
+      "outcome": "flat", "label_status": "candidate",
+      "events": ["Company-reported profitability 2022-2023; no subsequent up event in window"],
+      "evidence": [
+        { "text": "Company-reported cash-flow positive periods during industry repricing (2022-2023).", "source": "Company statements (2023)" },
+        { "text": "Layoffs and category consolidation as pandemic-era demand normalized (2023).", "source": "Press reports (2023)" },
+        { "text": "No public up-round or liquidity event within the window (2022-2024).", "source": "Market observation (2024)" }
+      ]
+    },
+    {
+      "name": "Noom", "segment": "consumer weight health", "seriesWindow": "2021 Series F",
+      "outcome": "flat", "label_status": "candidate",
+      "events": ["Layoffs 2022-2023, strategy pivots"],
+      "evidence": [
+        { "text": "Two rounds of layoffs within the window amid growth deceleration (2022-2023).", "source": "Press reports (2023)" },
+        { "text": "Pivot toward clinical/medication-assisted programs after consumer-course decline (2023-2024).", "source": "Press reports (2024)" },
+        { "text": "No public up-round after 2021 within the window (2022-2024).", "source": "Market observation (2024)" }
+      ]
+    },
+    {
+      "name": "Calm", "segment": "consumer mental wellness", "seriesWindow": "2020 $2B valuation round",
+      "outcome": "flat", "label_status": "candidate",
+      "events": ["Profitable but no public up event in window"],
+      "evidence": [
+        { "text": "Company-reported profitability sustained across the window (2021-2024).", "source": "Company statements (2024)" },
+        { "text": "Consumer wellness category slowdown post-2021; enterprise pivot (2023).", "source": "Industry reporting (2023)" },
+        { "text": "No public liquidity event or round within the window (2022-2024).", "source": "Market observation (2024)" }
+      ]
+    },
+    {
+      "name": "Headspace", "segment": "consumer + employer mental wellness", "seriesWindow": "2021 Ginger merger",
+      "outcome": "flat", "label_status": "candidate",
+      "events": ["Ginger merger 2021; layoffs 2023"],
+      "evidence": [
+        { "text": "Merged with Ginger to form combined entity at reduced effective valuation (2021).", "source": "Deal announcement (2021)" },
+        { "text": "Workforce reductions amid consumer slowdown (2023).", "source": "Press reports (2023)" },
+        { "text": "Enterprise pivot with mixed traction vs category peers (2023-2024).", "source": "Industry reporting (2024)" }
+      ]
+    },
+    {
+      "name": "K Health", "segment": "AI primary care", "seriesWindow": "2021 Series E",
+      "outcome": "flat", "label_status": "candidate",
+      "events": ["Layoffs 2022-2023; continued operations"],
+      "evidence": [
+        { "text": "Workforce reductions during industry repricing (2022-2023).", "source": "Press reports (2023)" },
+        { "text": "Payer/employer partnerships continued but scaled modestly (2023-2024).", "source": "Company statements (2024)" },
+        { "text": "No public up-round within the window (2022-2024).", "source": "Market observation (2024)" }
+      ]
+    },
+    {
+      "name": "Lyra Health", "segment": "employer mental health", "seriesWindow": "2021 Series F ($4.6B valuation)",
+      "outcome": "flat", "label_status": "candidate",
+      "events": ["Layoffs August 2023"],
+      "evidence": [
+        { "text": "Workforce reduction despite category-leading valuation (2023).", "source": "Press reports (2023)" },
+        { "text": "Employer buying slowdown in mental-health benefits category (2023-2024).", "source": "Industry reporting (2024)" },
+        { "text": "No public up-round after 2021 within the window (2022-2024).", "source": "Market observation (2024)" }
+      ]
+    },
+    {
+      "name": "Spring Health", "segment": "employer mental health", "seriesWindow": "2021 Series C",
+      "outcome": "up", "label_status": "candidate",
+      "events": ["Large 2023-2024 raises; category expansion"],
+      "evidence": [
+        { "text": "Raised large growth rounds during industry repricing (2023-2024).", "source": "Funding announcements (2024)" },
+        { "text": "Continued employer logo growth and international expansion (2024).", "source": "Company statements (2024)" },
+        { "text": "Category consolidation with precision-mental-health positioning (2024).", "source": "Industry reporting (2024)" }
+      ]
+    },
+    {
+      "name": "Headway", "segment": "insurance billing infrastructure for therapists", "seriesWindow": "2021 Series C",
+      "outcome": "up", "label_status": "candidate",
+      "events": ["Large 2023-2024 raises ($125M Series C+); continued growth"],
+      "evidence": [
+        { "text": "Raised major growth rounds during sector repricing (2023-2024).", "source": "Funding announcements (2024)" },
+        { "text": "Therapist-network and payer-coverage expansion (2023-2024).", "source": "Company statements (2024)" },
+        { "text": "Positioned as claims-infrastructure layer rather than care provider (2024).", "source": "Industry reporting (2024)" }
+      ]
+    },
+    {
+      "name": "Included Health", "segment": "employer navigation + virtual care", "seriesWindow": "2021 Grand Rounds × Doctor On Demand merger",
+      "outcome": "up", "label_status": "candidate",
+      "events": ["Merger of Grand Rounds and Doctor On Demand 2021; continued consolidation"],
+      "evidence": [
+        { "text": "Merged two scaled entities into unified navigation + virtual-care platform (2021).", "source": "Deal announcement (2021)" },
+        { "text": "Expanded LGBTQ+ and dedicated-care employer offerings (2022-2024).", "source": "Company statements (2024)" },
+        { "text": "Continued enterprise client growth within window (2023-2024).", "source": "Industry reporting (2024)" }
+      ]
+    },
+    {
+      "name": "SteadyMD", "segment": "telehealth infrastructure / clinician operations", "seriesWindow": "2022 Series C",
+      "outcome": "flat", "label_status": "candidate",
+      "events": ["Series C 2022; refocus toward infrastructure partnerships"],
+      "evidence": [
+        { "text": "Raised Series C then narrowed focus to clinician-operations infrastructure (2022-2023).", "source": "Company announcements (2023)" },
+        { "text": "Partner-dependent revenue model amid DTC telehealth slowdown (2023-2024).", "source": "Industry reporting (2024)" },
+        { "text": "No public up-round within window after Series C (2023-2024).", "source": "Market observation (2024)" }
+      ]
+    },
+    {
+      "name": "Two Chairs", "segment": "matched therapy practice", "seriesWindow": "2022 Series B ($73M)",
+      "outcome": "flat", "label_status": "candidate",
+      "events": ["Series B 2022; measured expansion since"],
+      "evidence": [
+        { "text": "Raised Series B with measurement-based-care positioning (2022).", "source": "Funding announcement (2022)" },
+        { "text": "Deliberate clinical-quality-first expansion, slower growth than category peers (2023-2024).", "source": "Company statements (2024)" },
+        { "text": "No public up-round within window after Series B (2023-2024).", "source": "Market observation (2024)" }
+      ]
+    },
+    {
+      "name": "Brightline", "segment": "pediatric behavioral health", "seriesWindow": "2021 Series C",
+      "outcome": "down", "label_status": "candidate",
+      "events": ["Layoffs 2022; wound down core clinical operations 2023-2024"],
+      "evidence": [
+        { "text": "Significant workforce reductions amid pediatric behavioral-health demand collapse post-2021 (2022).", "source": "Press reports (2022)" },
+        { "text": "Wound down direct clinical operations and shifted model (2023-2024).", "source": "Press reports (2024)" },
+        { "text": "Payer-contract strategy did not reach sustainable unit economics (2023).", "source": "Industry reporting (2023)" }
+      ]
+    }
+  ]
+}

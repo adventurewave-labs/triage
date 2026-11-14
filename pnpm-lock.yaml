@@ -11,12 +11,18 @@ importers:
       '@electric-sql/pglite':
         specifier: ^0.5.16
         version: 0.5.16
+      '@hono/node-server':
+        specifier: ^2.1.7
+        version: 2.1.7(hono@4.13.18)
       '@modelcontextprotocol/sdk':
         specifier: ^1.12.0
         version: 1.32.2(zod@3.25.76)
       commander:
         specifier: ^13.1.0
         version: 13.1.0
+      hono:
+        specifier: ^4.13.18
+        version: 4.13.18
       zod:
         specifier: ^3.24.0
         version: 3.25.76

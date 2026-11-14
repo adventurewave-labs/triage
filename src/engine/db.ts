@@ -9,16 +9,21 @@ import fs from "node:fs";
  */
 let instance: PGlite | null = null;
 
+/** Survives dev-server module reloads (Next/HMR-friendly singleton pattern). */
+const globalForDb = globalThis as unknown as { __triagePglite?: PGlite };
+
 export function dataDir(): string {
   return process.env.TRIAGE_DATA_DIR ?? path.join(process.cwd(), ".triage");
 }
 
 export async function getDb(): Promise<PGlite> {
   if (instance) return instance;
+  if (globalForDb.__triagePglite) return (instance = globalForDb.__triagePglite);
   const dir = dataDir();
   fs.mkdirSync(dir, { recursive: true });
   instance = new PGlite(dir);
   await migrate(instance);
+  globalForDb.__triagePglite = instance;
   return instance;
 }
 

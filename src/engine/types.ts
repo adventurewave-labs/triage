@@ -99,6 +99,7 @@ export interface BriefCard {
   bear_case: string;
   evidence_count: number;
   first_seen: string;
+  score_id: number | null;
 }
 
 export interface DeclinedCard {

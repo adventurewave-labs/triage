@@ -16,10 +16,12 @@ Full product thinking: [docs/PRD.md](docs/PRD.md) · [docs/field-evidence.md](do
 | Providers — deterministic mock judge (offline/CI) + Anthropic frontier judge | ✅ both shipped |
 | Eval harness — calibration over golden set; retrieval/faithfulness/stability hooks | ✅ calibration shipped; retrieval & faithfulness fixtures in tests |
 | Weekly briefing + declined section · dossier · IC memo generator | ✅ shipped (CLI + MCP) |
-| MCP server — 6 tools exposing the intelligence to agents | ✅ shipped |
+| **Web app** — briefing screen, dossier screen, one-tap override loop, calibration page | ✅ shipped (`pnpm web` → http://127.0.0.1:8080) |
+| MCP server — 6 tools exposing the intelligence to agents | ✅ shipped (`.mcp.json` included for project-scope use) |
 | Claude Code skills — brief / dossier / score / calibration | ✅ shipped (in `skills/`) |
-| Web app (Weekly Briefing + Dossier screens) | 🔜 milestone 2 — engine API is UI-agnostic and ready |
-| Founder scorecards role-weighted via outcome attribution | 🔜 milestone 2 |
+| Founder scorecards role-weighted via outcome attribution | 🔜 milestone 3 |
+
+**Deviation note (deliberate):** the PRD sketched Next.js for the web layer; milestone 2 ships a **zero-build server-rendered UI (Hono)** instead — the engine API is UI-agnostic, so productionizing into Next.js is config, not surgery. Boring on purpose (PRD §8); the product surface, not the framework, is the artifact.
 
 ## Quickstart
 
@@ -27,6 +29,7 @@ Full product thinking: [docs/PRD.md](docs/PRD.md) · [docs/field-evidence.md](do
 pnpm install
 pnpm seed          # watermarked synthetic corpus (see honesty note below)
 pnpm brief         # rank + declined section, printed as markdown
+pnpm web           # WEB UI → http://127.0.0.1:8080  (briefing · dossier · override loop · calibration)
 pnpm dossier --name "Corvia Care"
 pnpm memo --name "Corvia Care"
 pnpm calibrate     # calibration report vs golden set
@@ -36,6 +39,8 @@ pnpm mcp           # MCP stdio server for Claude Code & other agents
 ```
 
 Optional frontier judging: `TRIAGE_PROVIDER=anthropic TRIAGE_ANTHROPIC_API_KEY=... pnpm brief`.
+
+**MCP + skills:** the repo ships `.mcp.json` (project scope) — open Claude Code in this repo and the six `triage_*` tools are available; for user scope: `claude mcp add triage -- pnpm --dir /path/to/triage mcp`. Copy `skills/triage-*` into `.claude/skills/` to expose the four skills. Full demo walkthrough: [docs/demo-script.md](docs/demo-script.md).
 
 ## The honesty contract
 

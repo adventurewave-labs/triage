@@ -1,3 +1,4 @@
+import type { PGlite } from "@electric-sql/pglite";
 import { getDb } from "./db.js";
 import type { Entity, Edge, SignalRow } from "./types.js";
 import { SIM_PREFIX } from "./adapters/index.js";
@@ -37,8 +38,8 @@ export function demoNow(): string {
   return (corpusFile as CorpusFile).meta.now;
 }
 
-export async function seedCorpus(): Promise<{ entities: number; edges: number; signals: number; skipped: string[] }> {
-  const db = await getDb();
+export async function seedCorpus(dbOverride?: PGlite): Promise<{ entities: number; edges: number; signals: number; skipped: string[] }> {
+  const db = dbOverride ?? (await getDb());
   const corpus = corpusFile as CorpusFile;
   const golden = goldenNameSet();
   const skipped: string[] = [];

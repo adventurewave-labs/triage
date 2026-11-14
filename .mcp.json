@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "triage": {
+      "command": "pnpm",
+      "args": ["--dir", ".", "mcp"],
+      "env": {}
+    }
+  }
+}

@@ -4,7 +4,7 @@ import { seedCorpus, countRows, findEntityNameSeed } from "./pipeline.js";
 import { getProvider } from "./providers/index.js";
 import { assemblePack } from "./pack.js";
 import { scoreSubject, newRunId } from "./score.js";
-import { buildBriefing, renderBriefing, latestRunId } from "./briefing.js";
+import { runBriefingPipeline, renderBriefing } from "./briefing.js";
 import { buildDossier, renderDossier } from "./dossier.js";
 import { renderMemo } from "./memo.js";
 import { runCalibration, renderCalibration } from "./calibration.js";
@@ -69,23 +69,7 @@ program
   .command("brief")
   .description("Score all corpus companies and render the ranked weekly briefing")
   .action(async () => {
-    const db = await getDb();
-    const provider = getProvider();
-    const runId = newRunId("brief-scores");
-    const companyRows = await db.query<{ id: string }>(
-      `SELECT id FROM entities WHERE type='company' AND simulated=true AND id LIKE 'sim:%' ORDER BY name`
-    );
-    const scores = [];
-    for (const row of companyRows.rows) {
-      const pack = await assemblePack(db, row.id, "v0");
-      scores.push(await scoreSubject(db, provider, pack, runId));
-    }
-    const previous = await latestRunId(db, "brief");
-    const briefing = await buildBriefing(db, scores, previous);
-    await db.query(`INSERT INTO runs (id, kind, config) VALUES ($1,'brief',$2)`, [
-      briefing.run_id,
-      JSON.stringify({ score_run: runId, provider: provider.id, count: scores.length }),
-    ]);
+    const briefing = await runBriefingPipeline(await getDb(), getProvider());
     console.log(renderBriefing(briefing));
   });
 

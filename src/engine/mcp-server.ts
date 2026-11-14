@@ -5,7 +5,7 @@ import { getDb } from "./db.js";
 import { getProvider } from "./providers/index.js";
 import { assemblePack, findEntityByName } from "./pack.js";
 import { scoreSubject, newRunId } from "./score.js";
-import { buildBriefing, latestRunId } from "./briefing.js";
+import { runBriefingPipeline } from "./briefing.js";
 import { buildDossier, renderDossier } from "./dossier.js";
 import { searchSignals } from "./signals.js";
 import { runCalibration, renderCalibration } from "./calibration.js";
@@ -88,22 +88,7 @@ export async function startMcp(): Promise<void> {
     {},
     async () => {
       const db = await getDb();
-      const provider = getProvider();
-      const runId = newRunId("brief-scores");
-      const companyRows = await db.query<{ id: string }>(
-        `SELECT id FROM entities WHERE type='company' AND simulated=true AND id LIKE 'sim:%' ORDER BY name`
-      );
-      const scores = [];
-      for (const row of companyRows.rows) {
-        const pack = await assemblePack(db, row.id, "v0");
-        scores.push(await scoreSubject(db, provider, pack, runId));
-      }
-      const previous = await latestRunId(db, "brief");
-      const briefing = await buildBriefing(db, scores, previous);
-      await db.query(`INSERT INTO runs (id, kind, config) VALUES ($1,'brief',$2)`, [
-        briefing.run_id,
-        JSON.stringify({ score_run: runId, provider: provider.id, count: scores.length }),
-      ]);
+      const briefing = await runBriefingPipeline(db, getProvider());
       const text = briefing.cards
         .map((c) => `#${c.rank} ${c.name} — ${c.score} (conf ${c.confidence}${c.delta !== null ? `, Δ ${c.delta}` : ""})\n  why now: ${c.why_now[0] ?? "—"}\n  bear: ${c.bear_case.slice(0, 160)}`)
         .join("\n\n") +

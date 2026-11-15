@@ -10,7 +10,7 @@ pnpm brief
 pnpm web        # in a second terminal — http://127.0.0.1:8080
 ```
 
-Fallback: pre-recorded video + screenshots. No live-demo heroics.
+Fallback: pre-recorded video + screenshots. No live-demo heroics. A silent 18-second product walkthrough (`docs/demo/walkthrough-18s.webm` — briefing → dossier → calibration) is committed as the b-roll/fallback base; narrate over it or re-record with voice for the full 5-minute version.
 
 ---
 

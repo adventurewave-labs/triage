@@ -34,7 +34,10 @@ pnpm --version || exit 1
 
 step install     pnpm install --frozen-lockfile
 step typecheck   pnpm typecheck
-step tests       pnpm test
+# One bounded retry for the tests step only: on a cold Codespace boot we've
+# observed a transient vitest-config resolve race (.vite-temp written while
+# postinstall linking settles). A real failure fails twice.
+step tests       bash -c 'pnpm test || { sleep 10; pnpm test; }'
 step eval        pnpm eval
 
 rm -rf .triage

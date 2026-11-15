@@ -10,10 +10,22 @@ PORT=$PORT pnpm web >/tmp/web.log 2>&1 &
 SRV=$!
 trap 'kill $SRV 2>/dev/null || true' EXIT
 
-for _ in $(seq 1 30); do
-  curl -sf "http://127.0.0.1:$PORT/" >/dev/null 2>&1 && break
+# Cold-boot on a 2-core box: tsx transpile + PGlite WASM first-load can
+# exceed 30s, so wait up to 120s for CONTENT (not just a socket), and fail
+# loudly with the server log if the window is exceeded.
+ready=0
+for _ in $(seq 1 120); do
+  if curl -sf "http://127.0.0.1:$PORT/" 2>/dev/null | grep -q "TRIAGE"; then
+    ready=1
+    break
+  fi
   sleep 1
 done
+if [ "$ready" != 1 ]; then
+  echo "web-smoke: server did not serve content within 120s — server log:"
+  tail -n 20 /tmp/web.log
+  exit 1
+fi
 
 curl -sf "http://127.0.0.1:$PORT/" | grep -q "Corvia Care"
 curl -sf "http://127.0.0.1:$PORT/company/sim%3Acorvia" | grep -qi "warm path"

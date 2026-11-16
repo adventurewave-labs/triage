@@ -4,6 +4,7 @@
   "private": true,
   "description": "Evidence-linked decision support for early-stage healthcare investing",
   "type": "module",
+  "packageManager": "pnpm@12.4.2",
   "engines": {
     "node": ">=20"
   },

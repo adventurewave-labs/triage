@@ -22,6 +22,7 @@
     "calibrate": "tsx src/engine/cli.ts calibrate",
     "mcp": "tsx src/engine/cli.ts mcp",
     "web": "tsx src/web/server.ts",
+    "deploy:start": "tsx src/engine/cli.ts seed && tsx src/engine/cli.ts brief && tsx src/web/server.ts",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "eval": "tsx src/engine/cli.ts calibrate --quiet"

@@ -9,7 +9,15 @@ export default defineRailway(() => {
     build: "pnpm install --frozen-lockfile && pnpm typecheck",
     start: "pnpm run deploy:start",
     healthcheck: "/",
-    healthcheckTimeout: 300,
+    // The port only opens after seed + brief finish (sequential: PGlite is
+    // single-process per store), and a cold brief can run ~420 s on shared
+    // CPU (scripts/deploy-check.sh budget) — leave headroom past that.
+    healthcheckTimeout: 600,
+    env: {
+      // server.ts binds loopback unless HOST is set; Railway injects PORT
+      // but not HOST, so without this the proxy and healthcheck never reach it.
+      HOST: "0.0.0.0",
+    },
     // builder from CaC: "NIXPACKS"
   });
   return project("triage", {

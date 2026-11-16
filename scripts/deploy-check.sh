@@ -10,7 +10,8 @@ BASE="${1:-${TRIAGE_PUBLIC_URL:-}}"
 if [ -z "$BASE" ]; then echo "usage: deploy-check.sh <public-url>"; exit 2; fi
 BASE="${BASE%/}"
 TS() { date -u +%Y-%m-%dT%H:%M:%SZ; }
-MS() { date +%s%3N; }
+# portable milliseconds (GNU date %3N is unavailable on macOS/BSD)
+MS() { python3 -c 'import time; print(int(time.time()*1000))'; }
 TMP=$(mktemp -d)
 trap 'rm -rf "$TMP"' EXIT
 

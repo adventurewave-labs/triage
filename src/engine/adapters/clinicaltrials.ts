@@ -3,7 +3,7 @@ import type { SourceAdapter, RawSignal } from "./index.js";
 interface CtStudy {
   protocolSection?: {
     identificationModule?: { nctId?: string; briefTitle?: string };
-    statusModule?: { statusStruct?: { date?: string } };
+    statusModule?: { studyFirstPostDateStruct?: { date?: string } };
     sponsorCollaboratorsModule?: { leadSponsor?: { name?: string } };
     conditionsModule?: { conditions?: string[] };
     designModule?: { phases?: string[] };
@@ -26,11 +26,17 @@ export class ClinicalTrialsAdapter implements SourceAdapter {
 
   async fetchLatest(since: string, opts?: { area?: string; maxStudies?: number }): Promise<RawSignal[]> {
     const params = new URLSearchParams({
-      "filter.advanced": `AREA[StructuredSearch]=AND (AREA[StudyFirstPostDate]RANGE[${since},MAX])`,
-      "fields": "NCTId|BriefTitle|LeadSponsorName|StudyFirstPostDate|Condition|Phase",
+      "filter.advanced": `AREA[StudyFirstPostDate]RANGE[${since},MAX]`,
+      "fields": [
+        "protocolSection.identificationModule.nctId",
+        "protocolSection.identificationModule.briefTitle",
+        "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+        "protocolSection.statusModule.studyFirstPostDateStruct.date",
+        "protocolSection.conditionsModule.conditions",
+        "protocolSection.designModule.phases",
+      ].join(","),
       "pageSize": String(opts?.maxStudies ?? 40),
-      "sortField": "StudyFirstPostDate",
-      "sortType": "DESC",
+      "sort": "StudyFirstPostDate:desc",
     });
     if (opts?.area) params.set("query.cond", opts.area);
     const res = await fetch(`${BASE}?${params.toString()}`, { headers: { accept: "application/json" } });
@@ -41,7 +47,7 @@ export class ClinicalTrialsAdapter implements SourceAdapter {
       const p = study.protocolSection;
       const nctId = p?.identificationModule?.nctId;
       const sponsor = p?.sponsorCollaboratorsModule?.leadSponsor?.name;
-      const date = p?.statusModule?.statusStruct?.date;
+      const date = p?.statusModule?.studyFirstPostDateStruct?.date;
       if (!nctId || !sponsor || !date) continue;
       out.push({
         id: `nct:${nctId}`,

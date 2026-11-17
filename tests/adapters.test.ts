@@ -7,7 +7,7 @@ const ctFixture = {
     {
       protocolSection: {
         identificationModule: { nctId: "NCT12345678", briefTitle: "Study of Remote Monitoring" },
-        statusModule: { statusStruct: { date: "2026-10-20" } },
+        statusModule: { studyFirstPostDateStruct: { date: "2026-10-20" } },
         sponsorCollaboratorsModule: { leadSponsor: { name: "Example Health Inc" } },
         conditionsModule: { conditions: ["Heart Failure"] },
         designModule: { phases: ["PHASE2"] },

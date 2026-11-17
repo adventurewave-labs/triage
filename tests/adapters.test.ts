@@ -7,7 +7,7 @@ const ctFixture = {
     {
       protocolSection: {
         identificationModule: { nctId: "NCT12345678", briefTitle: "Study of Remote Monitoring" },
-        statusModule: { statusStruct: { date: "2026-10-20" } },
+        statusModule: { studyFirstPostDateStruct: { date: "2026-10-20" } },
         sponsorCollaboratorsModule: { leadSponsor: { name: "Example Health Inc" } },
         conditionsModule: { conditions: ["Heart Failure"] },
         designModule: { phases: ["PHASE2"] },
@@ -46,6 +46,27 @@ describe("source adapters (fixture-tested; live fetch is opt-in)", () => {
     expect(s.type).toBe("trial");
     expect(s.entity_names).toEqual(["Example Health Inc"]);
     expect(s.source_url).toContain("clinicaltrials.gov/study/NCT12345678");
+  });
+
+  it("clinicaltrials adapter issues a v2-shaped request (no v1-era params)", async () => {
+    const captured: string[] = [];
+    globalThis.fetch = (async (...args: Parameters<typeof fetch>) => {
+      captured.push(String(args[0]));
+      return new Response(JSON.stringify(ctFixture), { status: 200 });
+    }) as typeof fetch;
+    const adapter = new ClinicalTrialsAdapter();
+    await adapter.fetchLatest("2026-06-01");
+    const url = new URL(captured[0]!);
+    expect(url.origin + url.pathname).toBe("https://clinicaltrials.gov/api/v2/studies");
+    expect(url.searchParams.get("filter.advanced")).toBe(
+      "AREA[StudyFirstPostDate]RANGE[2026-06-01,MAX]",
+    );
+    expect(url.searchParams.get("sort")).toBe("StudyFirstPostDate:desc");
+    expect(url.searchParams.get("fields")).toContain(
+      "protocolSection.statusModule.studyFirstPostDateStruct.date",
+    );
+    expect(url.searchParams.has("sortField")).toBe(false);
+    expect(url.searchParams.has("sortType")).toBe(false);
   });
 
   it("openfda adapter normalizes 510(k) rows into citable signals", async () => {

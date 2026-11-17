@@ -73,6 +73,25 @@ button.agree { border-color: var(--good); } button.disagree { border-color: var(
 .dim-score { font-family: ui-monospace, monospace; color: var(--accent); }
 .small { font-size: 12px; color: var(--dim); }
 .footer { margin-top: 34px; color: var(--dim); font-size: 12px; border-top: 1px solid var(--line); padding-top: 14px; }
+/* landing hero — animated pipeline: signals → graph → ranked first pass */
+.hero { margin: -4px 0 18px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); overflow: hidden; }
+.hero svg { display: block; width: 100%; height: 88px; }
+.h-dot { stroke-width: 0; }
+.h-d1 { fill: var(--accent2); animation: hpulse 3s ease-in-out infinite; }
+.h-d2 { fill: var(--accent); animation: hpulse 3s ease-in-out .5s infinite; }
+.h-d3 { fill: var(--warn); animation: hpulse 3s ease-in-out 1s infinite; }
+.h-flow { fill: none; stroke: var(--line); stroke-width: 1.6; }
+.h-live { stroke: var(--accent); stroke-dasharray: 5 60; animation: hdash 3s linear infinite; }
+.h-edge { stroke: var(--line); stroke-width: 1.6; }
+.h-n { fill: var(--panel2); stroke: #38506a; stroke-width: 1.6; }
+.h-nc { fill: var(--accent); animation: hpulse 3s ease-in-out infinite; }
+.h-bar { fill: var(--accent); transform-origin: 50% 100%; animation: hrise 3s ease-in-out infinite; }
+.h-b2 { opacity: .7; animation-delay: .25s; } .h-b3 { opacity: .5; animation-delay: .5s; } .h-b4 { opacity: .35; animation-delay: .75s; }
+.h-bear { fill: var(--bad); animation: hblink 3s ease-in-out infinite; }
+@keyframes hpulse { 0%,100% { opacity:.5 } 50% { opacity:1 } }
+@keyframes hdash { to { stroke-dashoffset: -65; } }
+@keyframes hrise { 0%,100% { transform: scaleY(.55); } 50% { transform: scaleY(1); } }
+@keyframes hblink { 0%,100% { opacity:.25 } 50% { opacity:1 } }
 `;
 
 export function layout(title: string, body: string, active?: "brief" | "calibration"): string {
@@ -111,4 +130,38 @@ export function deltaHtml(delta: number | null): string {
   const sign = delta >= 0 ? "+" : "";
   const cls = delta > 0 ? "delta-up" : delta < 0 ? "delta-down" : "";
   return `<span class="${cls} small">Δ ${sign}${delta.toFixed(2)} vs last week</span>`;
+}
+
+/** Landing hero: the product's whole thesis as one animated strip — three signal sources flowing through an entity graph into a ranked, red-teamed briefing. */
+export function hero(): string {
+  return `<div class="hero" aria-hidden="true">
+<svg viewBox="0 0 1060 88" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <circle class="h-dot h-d1" cx="60" cy="22" r="5"/>
+  <circle class="h-dot h-d2" cx="60" cy="44" r="5"/>
+  <circle class="h-dot h-d3" cx="60" cy="66" r="5"/>
+  <path class="h-flow" d="M 68 22 C 150 22, 190 34, 248 41"/>
+  <path class="h-flow" d="M 68 44 C 150 44, 190 44, 248 44"/>
+  <path class="h-flow" d="M 68 66 C 150 66, 190 54, 248 47"/>
+  <path class="h-flow h-live" d="M 68 22 C 150 22, 190 34, 248 41"/>
+  <path class="h-flow h-live" style="animation-delay:1s" d="M 68 44 C 150 44, 190 44, 248 44"/>
+  <path class="h-flow h-live" style="animation-delay:2s" d="M 68 66 C 150 66, 190 54, 248 47"/>
+  <line class="h-edge" x1="258" y1="44" x2="302" y2="24"/>
+  <line class="h-edge" x1="258" y1="44" x2="304" y2="64"/>
+  <line class="h-edge" x1="302" y1="24" x2="304" y2="64"/>
+  <circle class="h-n" cx="302" cy="24" r="6"/>
+  <circle class="h-n" cx="304" cy="64" r="6"/>
+  <circle class="h-nc" cx="258" cy="44" r="7"/>
+  <path class="h-flow" d="M 268 44 C 330 44, 360 44, 408 44"/>
+  <path class="h-flow h-live" style="animation-delay:.6s" d="M 268 44 C 330 44, 360 44, 408 44"/>
+  <g transform="translate(428,0)">
+    <rect class="h-bar" x="0" y="18" width="17" height="52"/>
+    <rect class="h-bar h-b2" x="24" y="32" width="17" height="38"/>
+    <rect class="h-bar h-b3" x="48" y="43" width="17" height="27"/>
+    <rect class="h-bar h-b4" x="72" y="51" width="17" height="19"/>
+    <circle class="h-bear" cx="8" cy="12" r="3.5"/>
+  </g>
+  <text x="470" y="34" style="font:600 13px ui-monospace,monospace;fill:#7d8ea0">ranked · evidence-linked · red-teamed</text>
+  <text x="470" y="56" style="font:500 11.5px ui-monospace,monospace;fill:#38506a">bear case on every card · nothing silently dropped</text>
+</svg>
+</div>`;
 }

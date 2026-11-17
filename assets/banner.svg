@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" width="1200" height="280" role="img" aria-label="Triage — signals to entity graph to red-teamed, calibrated first pass">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0f14"/>
+      <stop offset="1" stop-color="#101820"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .t { font: 800 84px -apple-system, 'Segoe UI', Roboto, sans-serif; letter-spacing: 10px; fill: #d7e0ea; }
+    .tag { font: 500 21px ui-monospace, 'SF Mono', Menlo, monospace; fill: #7d8ea0; letter-spacing: 1px; }
+    .sub { font: 500 15px ui-monospace, 'SF Mono', Menlo, monospace; fill: #56718a; letter-spacing: 2px; }
+    .dot { stroke-width: 0; }
+    .d1 { fill: #6aa5f8; animation: pulse 2.4s ease-in-out infinite; }
+    .d2 { fill: #4cc2a9; animation: pulse 2.4s ease-in-out .4s infinite; }
+    .d3 { fill: #e0a458; animation: pulse 2.4s ease-in-out .8s infinite; }
+    .flow { fill: none; stroke: #223040; stroke-width: 2; }
+    .flowlive { stroke: #4cc2a9; stroke-dasharray: 6 90; animation: dash 2.6s linear infinite; }
+    .edge { stroke: #223040; stroke-width: 2; }
+    .n { fill: #182028; stroke: #38506a; stroke-width: 2; }
+    .nc { fill: #4cc2a9; stroke: #7de8cf; stroke-width: 2; animation: glow 2.4s ease-in-out infinite; }
+    .bar { fill: #4cc2a9; transform-origin: bottom; animation: rise 2.4s ease-in-out infinite; }
+    .b2 { opacity: .75; animation-delay: .2s; }
+    .b3 { opacity: .5; animation-delay: .4s; }
+    .b4 { opacity: .32; animation-delay: .6s; }
+    .bear { fill: #e06c75; animation: blink 2.4s ease-in-out infinite; }
+    .gate { stroke: #7ac38f; stroke-width: 3; fill: none; stroke-linecap: round; stroke-dasharray: 28; animation: gate 2.4s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+    @keyframes dash { to { stroke-dashoffset: -96; } }
+    @keyframes glow { 0%,100% { opacity:.7 } 50% { opacity:1 } }
+    @keyframes rise { 0%,100% { transform: scaleY(.55); } 50% { transform: scaleY(1); } }
+    @keyframes blink { 0%,100% { opacity:.25 } 50% { opacity:1 } }
+    @keyframes gate { 0% { stroke-dashoffset: 28; opacity: 0 } 45%,80% { stroke-dashoffset: 0; opacity: 1 } 100% { opacity: 0 } }
+  </style>
+
+  <rect width="1200" height="280" rx="14" fill="url(#bg)"/>
+  <rect x="8" y="8" width="1184" height="264" rx="10" fill="none" stroke="#223040" stroke-width="1"/>
+
+  <text x="80" y="128" class="t"><tspan fill="#4cc2a9">&#9656;</tspan> TRIAGE</text>
+  <text x="84" y="170" class="tag">signals &#8594; entity graph &#8594; red-teamed, calibrated first pass</text>
+  <text x="84" y="200" class="sub">EVIDENCE-LINKED DECISION SUPPORT FOR EARLY-STAGE INVESTING</text>
+  <text x="84" y="236" class="sub" fill="#38506a">citation gate &#183; bear cases &#183; calibration &#183; nothing silently dropped</text>
+
+  <!-- signal sources -->
+  <circle class="dot d1" cx="680" cy="80"  r="8"/>
+  <circle class="dot d2" cx="680" cy="140" r="8"/>
+  <circle class="dot d3" cx="680" cy="200" r="8"/>
+
+  <!-- flows into the graph -->
+  <path class="flow" d="M 692 80  C 760 80,  790 110, 838 132"/>
+  <path class="flow" d="M 692 140 C 750 140, 790 140, 838 140"/>
+  <path class="flow" d="M 692 200 C 760 200, 790 170, 838 148"/>
+  <path class="flow flowlive" d="M 692 80  C 760 80,  790 110, 838 132"/>
+  <path class="flow flowlive" style="animation-delay:.9s" d="M 692 140 C 750 140, 790 140, 838 140"/>
+  <path class="flow flowlive" style="animation-delay:1.7s" d="M 692 200 C 760 200, 790 170, 838 148"/>
+
+  <!-- entity graph -->
+  <line class="edge" x1="848" y1="140" x2="906" y2="102"/>
+  <line class="edge" x1="848" y1="140" x2="908" y2="180"/>
+  <line class="edge" x1="906" y1="102" x2="908" y2="180"/>
+  <circle class="n" cx="906" cy="102" r="9"/>
+  <circle class="n" cx="908" cy="180" r="9"/>
+  <circle class="nc" cx="848" cy="140" r="11"/>
+
+  <!-- flow out to the ranking -->
+  <path class="flow" d="M 860 140 C 920 140, 950 140, 988 140"/>
+  <path class="flow flowlive" style="animation-delay:.5s" d="M 860 140 C 920 140, 950 140, 988 140"/>
+
+  <!-- citation gate check -->
+  <path class="gate" d="M 968 96 l 8 9 l 16 -18"/>
+
+  <!-- ranked bars (briefing) -->
+  <g transform="translate(1008,0)">
+    <rect class="bar"    x="0"  y="96"  width="26" height="114"/>
+    <rect class="bar b2" x="36" y="126" width="26" height="84"/>
+    <rect class="bar b3" x="72" y="150" width="26" height="60"/>
+    <rect class="bar b4" x="108" y="168" width="26" height="42"/>
+    <!-- bear case marker on the top card -->
+    <circle class="bear" cx="13" cy="88" r="5"/>
+  </g>
+</svg>

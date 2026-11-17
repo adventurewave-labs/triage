@@ -6,7 +6,7 @@ import { runBriefingPipeline, briefingFromDb } from "../engine/briefing.js";
 import { buildDossier } from "../engine/dossier.js";
 import { recordOverride, REASON_CODES } from "../engine/overrides.js";
 import { runCalibration } from "../engine/calibration.js";
-import { layout, esc, scoreBadge, deltaHtml, safeBack } from "./html.js";
+import { layout, esc, scoreBadge, deltaHtml, safeBack, hero } from "./html.js";
 
 /**
  * Triage web UI — server-rendered, zero build. The ≤10-second override loop
@@ -21,6 +21,7 @@ app.get("/", async (c) => {
 
   let body = "";
   if (flash) body += `<div class="flash">${esc(flash)}</div>\n`;
+  body += hero();
   body += `<form method="post" action="/run/brief" class="runbtn"><button>▸ Re-run scoring</button></form>\n`;
 
   if (!briefing || briefing.cards.length === 0) {

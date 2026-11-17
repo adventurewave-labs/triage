@@ -1,3 +1,10 @@
+![Triage](assets/banner.svg)
+
+[![CI](https://github.com/adventurewave-labs/triage/actions/workflows/ci.yml/badge.svg)](https://github.com/adventurewave-labs/triage/actions/workflows/ci.yml)
+[![release](https://img.shields.io/github/v/release/adventurewave-labs/triage)](https://github.com/adventurewave-labs/triage/releases)
+[![license: MIT](https://img.shields.io/badge/license-MIT-4cc2a9)](LICENSE)
+[![live demo](https://img.shields.io/badge/live-demo-4cc2a9?logo=railway)](https://triage-web-production-e6bf58de.up.railway.app)
+
 # Triage
 
 **Evidence-linked decision support for early-stage healthcare investing: public signals → entity graph → red-teamed, calibrated weekly briefing.**
@@ -99,4 +106,4 @@ docs/             PRD · field evidence · interview guide · war stories
 
 ## License / provenance
 
-Private research artifact of adventurewave-labs. PRD provenance: workflow model grounded in public operator accounts and research (cited in `docs/field-evidence.md`); private-conversation validation scheduled before production use.
+MIT — see [LICENSE](LICENSE). Released by adventurewave-labs as v0.1.0 (see [CHANGELOG.md](CHANGELOG.md) for the full verification record). PRD provenance: workflow model grounded in public operator accounts and research (cited in `docs/field-evidence.md`).

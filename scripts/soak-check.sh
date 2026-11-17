@@ -15,7 +15,9 @@ SOAK_DIR="$PWD/.soak-data"
 SOAK_PORT=8223
 SOAK_PID_FILE=/tmp/triage-soak.pid
 SOAK_LOG=/tmp/triage-soak-web.log
-SOAK_METRICS=/tmp/triage-soak-metrics.tsv
+# Durable metrics (soak finding #3): /tmp does not survive codespace
+# hibernation — the persisted repo volume does.
+SOAK_METRICS="$SOAK_DIR/metrics.tsv"
 BASE="http://127.0.0.1:$SOAK_PORT"
 
 ts() { date -u +%Y-%m-%dT%H:%M:%SZ; }

@@ -106,4 +106,4 @@ docs/             PRD · field evidence · interview guide · war stories
 
 ## License / provenance
 
-MIT — see [LICENSE](LICENSE). Released by adventurewave-labs as v0.1.0 (see [CHANGELOG.md](CHANGELOG.md) for the full verification record). PRD provenance: workflow model grounded in public operator accounts and research (cited in `docs/field-evidence.md`).
+MIT — see [LICENSE](LICENSE). See [GitHub Releases](https://github.com/adventurewave-labs/triage/releases) and [CHANGELOG.md](CHANGELOG.md) for release notes and verification. PRD provenance: workflow model grounded in public operator accounts and research (cited in `docs/field-evidence.md`).

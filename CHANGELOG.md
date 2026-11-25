@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.1
+
+- Declare the root package in `pnpm-workspace.yaml` so pnpm recognizes the workspace.
+- Correct the ClinicalTrials.gov v2 date filter, field selection, and sort parameter. Read the first-posted date from the v2 response and cover the request format with a regression test.
+
 ## v0.1.0 — 2026-11-17
 
 First public release: **evidence-linked decision support for early-stage healthcare investing** — public signals → entity graph → red-teamed, calibrated weekly briefing.

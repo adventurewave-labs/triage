@@ -17,7 +17,7 @@ import { warmPathFor } from "./adapters/crm-synthetic.js";
  * calibration report — the institution, wired into an agent workflow.
  */
 export async function startMcp(): Promise<void> {
-  const server = new McpServer({ name: "triage", version: "0.1.0" });
+  const server = new McpServer({ name: "triage", version: "0.1.1" });
 
   server.tool(
     "triage_search_signals",
